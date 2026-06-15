@@ -1,0 +1,42 @@
+name: Streamlit RAG CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set Python Version
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install Dependencies
+        run: uv sync
+
+      - name: Check Python Syntax
+        run: |
+          python -m py_compile app.py
+          python -m py_compile chatbot.py
+          python -m py_compile data_fetcher.py
+          python -m py_compile vector_store.py
+
+      - name: Verify Imports
+        run: |
+          python -c "import streamlit"
