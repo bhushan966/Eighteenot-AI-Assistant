@@ -4,18 +4,15 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -30,13 +27,17 @@ jobs:
       - name: Install Dependencies
         run: uv sync
 
+      - name: Show Installed Packages
+        run: uv pip list
+
       - name: Check Python Syntax
         run: |
-          python -m py_compile app.py
-          python -m py_compile chatbot.py
-          python -m py_compile data_fetcher.py
-          python -m py_compile vector_store.py
+          uv run python -m py_compile app.py
+          uv run python -m py_compile chatbot.py
+          uv run python -m py_compile data_fetcher.py
+          uv run python -m py_compile vector_store.py
 
       - name: Verify Imports
         run: |
-          python -c "import streamlit"
+          uv run python -c "import streamlit"
+          uv run python -c "import langchain"
