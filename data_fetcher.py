@@ -1,5 +1,4 @@
 import os
-import json
 import requests
 from dotenv import load_dotenv
 from langchain_tavily import TavilySearch
@@ -127,9 +126,9 @@ SECTION 2 - WEB SEARCH (Centuries, Records, Recent Matches)
     with open("data/kohli_document.txt", "w", encoding="utf-8") as f:
         f.write(full_document)
 
-    print(f"✅ Data collection complete!")
+    print("✅ Data collection complete!")
     print(f"   📄 Total document: {len(full_document):,} characters")
-    print(f"   📁 Saved to: data/kohli_document.txt")
+    print("📁 Saved to: data/kohli_document.txt")
 
     return full_document
 

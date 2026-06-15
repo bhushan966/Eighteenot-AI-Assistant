@@ -1,5 +1,4 @@
-import warnings
-warnings.filterwarnings("ignore")
+
 
 import os
 from dotenv import load_dotenv
@@ -10,7 +9,11 @@ from langchain_classic.chains import ConversationalRetrievalChain
 from langchain_classic.memory import ConversationBufferMemory
 from langchain_core.prompts import PromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate, ChatPromptTemplate
 from langsmith import traceable
+import warnings
+warnings.filterwarnings("ignore")
 load_dotenv()
+
+
 
 # ─────────────────────────────────────────────
 # LANGSMITH TRACING SETUP
@@ -124,7 +127,7 @@ def build_chain(vectorstore):
 def ask(chain, question: str) -> str:
     result = chain.invoke({"question": question})
     answer = result.get("answer", "I don't know.")
-    sources = result.get("source_documents", [])
+    # sources = result.get("source_documents", [])
 
     return answer
 

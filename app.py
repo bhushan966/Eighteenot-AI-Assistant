@@ -1,5 +1,4 @@
-import warnings
-warnings.filterwarnings("ignore")
+
 
 import os
 import sys
@@ -8,6 +7,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 import streamlit as st
 from dotenv import load_dotenv
 from chatbot import initialize_Eighteenot, ask
+
+import warnings
+warnings.filterwarnings("ignore")
 
 load_dotenv()
 
