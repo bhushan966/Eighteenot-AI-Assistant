@@ -26,6 +26,12 @@ jobs:
 
       - name: Install Dependencies
         run: uv sync
+      
+      - name: Install Ruff
+        run: uv add --dev ruff
+      
+      - name: Run Ruff
+        run: uv run ruff check .
 
       - name: Show Installed Packages
         run: uv pip list
@@ -41,3 +47,6 @@ jobs:
         run: |
           uv run python -c "import streamlit"
           uv run python -c "import langchain"
+
+      - name: Streamlit Smoke Test
+        run: timeout 30s uv run streamlit run app.py --server.headless true
