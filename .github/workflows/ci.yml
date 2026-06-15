@@ -49,5 +49,7 @@ jobs:
           uv run python -c "import langchain"
 
       - name: App Import Test
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           uv run python -c "import app"
