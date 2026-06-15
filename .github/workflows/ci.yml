@@ -48,8 +48,8 @@ jobs:
           uv run python -c "import streamlit"
           uv run python -c "import langchain"
 
-      - name: App Import Test
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - name: Verify Project Imports
         run: |
-          uv run python -c "import app"
+          uv run python -c "import chatbot"
+          uv run python -c "import data_fetcher"
+          uv run python -c "import vector_store"
