@@ -48,5 +48,6 @@ jobs:
           uv run python -c "import streamlit"
           uv run python -c "import langchain"
 
-      - name: Streamlit Smoke Test
-        run: timeout 30s uv run streamlit run app.py --server.headless true
+      - name: App Import Test
+        run: |
+          uv run python -c "import app"
