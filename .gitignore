@@ -16,8 +16,6 @@ venv/
 # Environment variables
 .env
 
-# Vector Store (generated)
-data/kohli_vectorstore/
 
 # Streamlit cache
 .streamlit/
