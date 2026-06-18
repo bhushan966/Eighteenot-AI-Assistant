@@ -1,11 +1,31 @@
 # Python-generated files
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
+
+# Build files
 build/
 dist/
 wheels/
-*.egg-info
+*.egg-info/
 
 # Virtual environments
-.venv
-.env 
+.venv/
+venv/
+
+# Environment variables
+.env
+
+# Vector Store (generated)
+data/kohli_vectorstore/
+
+# Streamlit cache
+.streamlit/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -7,15 +7,7 @@ streamlit
 langsmith
 python-dotenv
 requests
-tiktoken
-beautifulsoup4
-lxml
-pandas
-tavily-python
 langchain-tavily
 wikipedia 
-langchain-huggingface 
-langchain-faiss
-sentence-transformers 
-fastapi
-uvicorn
+langchain-ollama
+

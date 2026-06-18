@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
@@ -29,9 +29,8 @@ def split_document(text):
 
 def create_vector_store(chunks):
 
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
-        model_kwargs={"device": "cpu"},
+    embeddings = OllamaEmbeddings(
+        model="nomic-embed-text",
     )
 
     vectorstore = FAISS.from_documents(chunks, embeddings)
@@ -44,9 +43,8 @@ def save_vector_store(vectorstore):
 def load_vector_store():
     """Load existing vector store — used by chatbot.py"""
     print("📂 Loading existing vector store...")
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
-        model_kwargs={"device": "cpu"},
+    embeddings = OllamaEmbeddings(
+        model="nomic-embed-text",
     )
     vectorstore = FAISS.load_local(
         VECTOR_STORE_PATH,

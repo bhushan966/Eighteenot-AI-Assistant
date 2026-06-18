@@ -3,7 +3,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_classic.chains import ConversationalRetrievalChain
 from langchain_classic.memory import ConversationBufferMemory
@@ -76,9 +76,8 @@ def build_prompt():
 # LOAD VECTOR STORE
 # ─────────────────────────────────────────────
 def load_vector_store():
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",
-        model_kwargs={"device": "cpu"},
+    embeddings = OllamaEmbeddings(
+        model ="nomic-embed-text",
     )
     vectorstore = FAISS.load_local(
         VECTOR_STORE_PATH,
