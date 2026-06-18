@@ -31,6 +31,7 @@ def create_vector_store(chunks):
 
     embeddings = OllamaEmbeddings(
         model="nomic-embed-text",
+        base_url="http://host.docker.internal:11434"
     )
 
     vectorstore = FAISS.from_documents(chunks, embeddings)
@@ -45,6 +46,7 @@ def load_vector_store():
     print("📂 Loading existing vector store...")
     embeddings = OllamaEmbeddings(
         model="nomic-embed-text",
+        base_url="http://host.docker.internal:11434"
     )
     vectorstore = FAISS.load_local(
         VECTOR_STORE_PATH,

@@ -78,6 +78,7 @@ def build_prompt():
 def load_vector_store():
     embeddings = OllamaEmbeddings(
         model ="nomic-embed-text",
+        base_url="http://host.docker.internal:11434"
     )
     vectorstore = FAISS.load_local(
         VECTOR_STORE_PATH,
